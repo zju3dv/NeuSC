@@ -1,6 +1,6 @@
 # Neural Scene Chronology
 
-### [Project Page](https://zju3dv.github.io/neusc) | [Paper](https://openaccess.thecvf.com/content/CVPR2023/html/Lin_Neural_Scene_Chronology_CVPR_2023_paper.html)
+### [Project Page](https://zju3dv.github.io/neusc) | [Video](https://youtu.be/ak47wEZH1kY) | [Paper](https://arxiv.org/abs/2306.07970) | [Data](https://zjueducn-my.sharepoint.com/:f:/g/personal/haotongl_zju_edu_cn/EpL9XCKhfRNDmbrjeJC55T8B2XJiwlY_Ag9t9aBL2ULQ6g?e=HSUt9K)
 
 ![teaser](assets/teaser.png)
 
