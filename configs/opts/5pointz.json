@@ -1,0 +1,11 @@
+[   
+    {"type": "space", "time": [2013, 10, 31], "view_range": [0, 20]},
+    {"type": "time", "view": 20, "time_range": [[2013, 10, 1], [2011, 8, 1]], "time_number": 60},
+    {"type": "space-time", "time_range": [[2011, 8, 1], [2009, 9, 1]], "view_range": [20, 50]},
+    {"type": "space", "time": [2009, 9, 1], "view_range": [50, 80]},
+    {"type": "time", "view": 80, "time_range": [[2009, 9, 1], [2013, 10, 1]], "time_number": 100},
+    {"type": "space", "time": [2013, 10, 1], "view_range": [80, 130]},
+    {"type": "time", "time_range": [[2013, 10, 1], [2010, 10, 1]], "view": 130, "time_number": 80},
+    {"type": "space-time", "time_range": [[2010, 10, 1], [2013, 10, 1]], "view_range": [130, 210]},
+    {"type": "time", "time_range": [[2013, 10, 31], [2010, 1, 1]], "view": 210, "time_number": 120}
+]

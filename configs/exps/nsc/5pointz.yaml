@@ -1,0 +1,95 @@
+task: nsc
+gpus: [0]
+exp_name: 'base'
+scene: '5pointz'
+
+# module path for dataloader, network, loss, evaluator
+train_dataset_module: lib.datasets.nsc.colmap
+test_dataset_module: lib.datasets.nsc.colmap
+network_module: lib.networks.nsc.network
+loss_module: lib.train.losses.nsc
+evaluator_module: lib.evaluators.nsc
+
+start_date: [2009, 8, 31]
+end_date:  [2013, 11, 17]
+octree_ply_path: 'dense/meshed-poisson-clean.ply'
+query_octree: False # to skip empty regions and background
+num_pixels: 1024 # number of pixels to sample for each image during each tarining iteration
+chunk_size: 4096
+white_bkgd: False
+cascade_samples: [64, 64] # importance sampling
+n_emb: 3000 # number of per-image embeddings
+dim_app_emb: 48 # dimension of learnable embedding for illumination
+dim_mask_emb: 128 # dimension of learnable embedding for uncertainty mask
+dim_env_emb: 128 # dimension of learnable embedding for environment map
+
+# dataset setting
+train_dataset:
+    ann_file: 'train.txt'
+    data_root: 'chronology'
+    split: 'train'
+    input_ratio: 1.
+    input_sample: [0, -1, 1]
+test_dataset:
+    ann_file: 'train.txt'
+    data_root: 'chronology'
+    split: 'test'
+    input_ratio: 0.25
+    input_sample: [0, -1, 10]
+
+# network setting
+network:
+    envmap: True
+    use_view_dir: False
+    nerf:
+        W: 256 # width
+        D: 8 # depth
+        D_V: 0 # depth for view direction
+        D_A: 0 # depth for illumination (appearance) embedding
+        D_T: 3 # depth for time encoding (which controls underlying content)
+    xyz_encoder: # positional encoding
+        type: 'frequency' 
+        input_dim: 3
+        freq: 15
+    app_xyz_encoder: # apperance triplane encoding triplane
+        type: 'cuda_triplane' 
+        input_dim: 2
+        num_levels: 16
+        per_level_scale: 1.57
+        level_dim: 4
+        base_resolution: 16
+        log2_hashmap_size: 19
+    dir_encoder: # positional encoding
+        type: 'frequency'
+        input_dim: 3
+        freq: 1
+    uv_encoder: # potitional encoding
+        type: 'frequency'
+        input_dim: 2
+        freq: 10
+    time_encoder: # step function encoding
+        type: 'step_func'
+        input_dim: 1
+        output_dim: 16
+        init_val: 0.3
+        hard_grad: True
+
+# training setting
+train:
+    batch_size: 2 # number of images per batch
+    lr: 5e-4
+    weight_decay: 0.
+    epoch: 800
+    scheduler:
+        type: 'exponential'
+        gamma: 0.1
+        decay_epochs: 1000
+    num_workers: 8
+test:
+    batch_size: 1
+
+ep_iter: 1000 # 1000 iterations per epoch
+save_ep: 20 # save frequency: save_ep * ep_iter iterations
+eval_ep: 1000 # donnot evaluate during training
+save_latest_ep: 20 # extraly save the latest model every save_latest_ep * ep_iter iterations
+log_interval: 10 # log training status every log_interval iterations

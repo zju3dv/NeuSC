@@ -1,0 +1,5 @@
+parent_cfg: 'configs/exps/nsc/5pointz.yaml'
+exp_name: 'base_hd'
+cascade_samples: [128, 128] # importance sampling
+train:
+    batch_size: 4 # number of images per batch

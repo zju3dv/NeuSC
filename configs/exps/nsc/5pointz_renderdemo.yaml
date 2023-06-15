@@ -1,0 +1,15 @@
+parent_cfg: 'configs/exps/nsc/5pointz.yaml'
+
+test_dataset_module: lib.datasets.nsc.colmap_render
+network_module: lib.networks.nsc.network_render
+evaluator_module: lib.evaluators.nsc_render
+
+query_octree_ply_path: 'dense/meshed-poisson-clean-octree-remove.ply'
+save_tag: 'renderdemo'
+save_result: True
+render_demo: True
+render_fhwe: [39.6, 1200, 1920, 30] # focal, height, width, emb_id
+render_json: 'configs/opts/5pointz.json'
+render_path: 'configs/opts/5pointz.npy'
+render_filter: 'configs/opts/5pointz.py'
+render_fps: 20
