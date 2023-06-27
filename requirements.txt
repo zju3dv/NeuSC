@@ -1,0 +1,12 @@
+pyyaml
+opencv-python
+imgaug
+plyfile
+ipdb
+lpips
+kornia
+tensorboardX
+termcolor
+trimesh
+tqdm
+gdown
