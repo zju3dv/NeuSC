@@ -57,7 +57,7 @@ rm 5pointz.zip
 
 Make sure you have prepared images with timestamps. The timestamp refers to the prefix of the image; please refer to the 5PointZ example dataset.
 
-1. he first step is to run colmap SfM, and undistort the images, followed by dense reconstruction to obtain meshed-poisson.ply. Use meshlab to select the area of interest from meshed-poisson.ply, and save it as meshed-poisson-clean.ply.
+1. The first step is to run colmap SfM, and undistort the images, followed by dense reconstruction to obtain meshed-poisson.ply. Use meshlab to select the area of interest from meshed-poisson.ply, and save it as meshed-poisson-clean.ply.
 
 2. Generate semantic maps. The purpose of this step is to segment the sky for training the environment map, and to segment pedestrians and vehicles to avoid these pixels during training.
 ```
