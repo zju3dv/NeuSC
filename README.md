@@ -67,13 +67,13 @@ python scripts/semantic/prepare_data.py --root_dir ${CUSTOM_DATA_PATH} --gpu 0
 
 3. Generate annots. 
 
-First, generate cam_dict.npy and train.txt, which store the camera pose and training list, respectively.
+First, generate `cam_dict.npy` and `train.txt`, which store the camera pose and training list, respectively.
 You can modify train.txt to select specific time periods, or keep some images for testing purposes.
 ```
 python scripts/colmap/gen_annots.py --input ${CUSTOM_DATA_PATH}
 ```
 
-Then, generate trash.txt to filter out some of the more noisy images. For example, images where more than two-thirds of the pixels are portraits, or images with very few points registered during the SfM process. These images usually provide little help to the model.
+Then, generate `trash.txt` to filter out some of the more noisy images. For example, images where more than two-thirds of the pixels are portraits, or images with very few points registered during the SfM process. These images usually provide little help to the model.
 ```
 python scripts/colmap/gen_trash.py --data_root ${CUSTOM_DATA_PATH}
 ```
