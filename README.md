@@ -57,14 +57,27 @@ rm 5pointz.zip
 
 Make sure you have prepared images with timestamps. The timestamp refers to the prefix of the image; please refer to the 5PointZ example dataset.
 
-1. The first step is to run colmap SfM, and undistort the images, followed by dense reconstruction to obtain meshed-poisson.ply. Use meshlab to select the area of interest from meshed-poisson.ply, and save it as meshed-poisson-clean.ply.
+1. The first step is to run colmap SfM, and undistort the images, followed by dense reconstruction to obtain `meshed-poisson.ply`. Use Meshlab to select the region of interest from `meshed-poisson.ply`, and save it as `meshed-poisson-clean.ply`.
 
 2. Generate semantic maps. The purpose of this step is to segment the sky for training the environment map, and to segment pedestrians and vehicles to avoid these pixels during training.
+Please download the semantic model from [this link](https://github.com/open-mmlab/mmsegmentation/blob/c685fe6767c4cadf6b051983ca6208f1b9d1ccb8/configs/deeplabv3/README.md?plain=1#L59).
 ```
 python scripts/semantic/prepare_data.py --root_dir ${CUSTOM_DATA_PATH} --gpu 0 
 ```
 
-3. Generate annots [TODO]
+3. Generate annots. 
+
+First, generate cam_dict.npy and train.txt, which store the camera pose and training list, respectively.
+You can modify train.txt to select specific time periods, or keep some images for testing purposes.
+```
+python scripts/colmap/gen_annots.py --input ${CUSTOM_DATA_PATH}
+```
+
+Then, generate trash.txt to filter out some of the more noisy images. For example, images where more than two-thirds of the pixels are portraits, or images with very few points registered during the SfM process. These images usually provide little help to the model.
+```
+python scripts/colmap/gen_trash.py --data_root ${CUSTOM_DATA_PATH}
+```
+
 
 
 ## Inference and Training
