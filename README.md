@@ -1,6 +1,6 @@
 # Neural Scene Chronology
 
-### [Project Page](https://zju3dv.github.io/neusc) | [Video](https://youtu.be/ak47wEZH1kY) | [Paper](https://arxiv.org/abs/2306.07970) | [Data](https://zjueducn-my.sharepoint.com/:f:/g/personal/haotongl_zju_edu_cn/EpL9XCKhfRNDmbrjeJC55T8B2XJiwlY_Ag9t9aBL2ULQ6g?e=HSUt9K)
+### [Project Page](https://zju3dv.github.io/neusc) | [Video](https://youtu.be/ak47wEZH1kY) | [Paper](https://arxiv.org/abs/2306.07970) | [Data](https://landmark.cs.cornell.edu/data/neural_scene_chronology/5pointz.zip)
 
 ![teaser](assets/teaser.png)
 
@@ -30,7 +30,7 @@ export workspace=$PATH_TO_YOUR_WORKSPACE
    
 #### 1. Pre-trained model
 
-Download the pretrained model from [this link](https://drive.google.com/drive/folders/1hRIHBBjj1JzyBc0WF6xuNwo-wTKuQ_3i?usp=sharing).
+Download the pretrained model from [this link](https://landmark.cs.cornell.edu/data/neural_scene_chronology/latest.pth).
 
 Or you can use the following command to download it.
 ```
@@ -42,7 +42,7 @@ gdown 1edfa_pYk1m_wxC7dmiHcs40BA89z-kW6
 
 #### 2. Chronology dataset (Optional; download it if you want do training)
 
-Download the 5PointZ dataset from [this link](https://drive.google.com/drive/folders/1hRIHBBjj1JzyBc0WF6xuNwo-wTKuQ_3i?usp=sharing).
+Download the 5PointZ dataset from [this link](https://landmark.cs.cornell.edu/data/neural_scene_chronology/5pointz.zip).
 
 Or you can use the following command to download it.
 ```
